@@ -11,9 +11,7 @@ export const Education = () => {
       type: 'education',
       title: "Bachelor of Computer Science, The University of Adelaide, Feb 2023 – Dec 2025",
       items: [
-        "GPA: 6.75/7",
-        "The UoAC High Achiever Progression Scholarship (Top 100 students)",
-        "Global Citizens Scholarship (30% scholarship)",
+        "GPA: 6.75/7 \n The UoAC High Achiever Progression Scholarship (Top 100 students) \n Global Citizens Scholarship (30% scholarship)",
       ],
       image: "university.png",
     },

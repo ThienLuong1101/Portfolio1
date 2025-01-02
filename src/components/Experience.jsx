@@ -7,14 +7,13 @@ export const ExperienceCard = ({ title, company, companyUrl, date, points, image
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // When the card is in the viewport, set isVisible to true
           setIsVisible(entry.isIntersecting);
         });
       },
-      { threshold: 0.3 } // Trigger when 30% of the element is in the viewport
+      { threshold: 0.3 }
     );
 
-    const cardElement = document.getElementById(title); // Use the title as a unique id for each card
+    const cardElement = document.getElementById(title);
     if (cardElement) {
       observer.observe(cardElement);
     }
@@ -50,9 +49,11 @@ export const ExperienceCard = ({ title, company, companyUrl, date, points, image
 
         {/* Right Column - Experience details */}
         <div className="flex-1">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-            <div>
-              <h3 className="text-xl font-semibold text-white">
+          {/* Title and Date Container */}
+          <div className="flex flex-col space-y-2 md:space-y-0 md:flex-row md:items-center md:justify-between mb-4">
+            {/* Title and Company */}
+            <div className="pr-4">
+              <h3 className="text-xl font-semibold text-white break-words">
                 {title}
                 <span className="text-cyan-400">
                   ,{" "}
@@ -60,19 +61,24 @@ export const ExperienceCard = ({ title, company, companyUrl, date, points, image
                     href={companyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:opacity-100 hover:drop-shadow-[0_0_10px_rgba(72,210,255,0.8)]"
+                    className="hover:opacity-100 hover:drop-shadow-[0_0_10px_rgba(72,210,255,0.8)] break-words"
                   >
                     {company}
                   </a>
                 </span>
               </h3>
             </div>
-            <span className="text-gray-400 text-sm md:text-base">{date}</span>
+            {/* Date */}
+            <div className="md:flex-shrink-0">
+              <span className="text-gray-400 text-sm md:text-base whitespace-nowrap">{date}</span>
+            </div>
           </div>
-          <ul className="list-disc list-inside text-gray-400 space-y-2 max-h-36">
+          
+          {/* Points */}
+          <ul className="list-disc list-inside text-gray-400 space-y-2">
             {points.map((point, index) => (
               <li key={index} className="leading-relaxed">
-                {point}
+                <span className="break-words">{point}</span>
               </li>
             ))}
           </ul>
@@ -81,6 +87,8 @@ export const ExperienceCard = ({ title, company, companyUrl, date, points, image
     </div>
   );
 };
+
+
 
 export const Experience = () => {
   const experiences = [
@@ -102,7 +110,6 @@ export const Experience = () => {
       points: [
         "Developed a ranking board for users based on their stakes in the VDAStake pool by fetching data from the Polygon smart contract. (HTML, CSS, JavaScript).",
         "Gained hands-on experience with blockchain technology and smart contract integration.",
-        "Refactored project documentation to improve clarity and usability (Gitbook).",
       ],
       image: "verida.png",
     },
