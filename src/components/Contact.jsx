@@ -3,6 +3,7 @@ import { Send } from 'lucide-react';
 import { useState } from 'react';
 import emailjs from 'emailjs-com';
 
+
 export const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -28,10 +29,10 @@ export const Contact = () => {
       };
 
       await emailjs.send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID, 
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID, 
-        templateParams, 
-        process.env.REACT_APP_EMAILJS_USER_ID
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_USER_ID
       );
       
 

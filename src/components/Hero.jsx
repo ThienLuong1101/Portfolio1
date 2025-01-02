@@ -52,7 +52,7 @@ export const Hero = () => {
           <div className="relative w-64 h-64 md:w-80 md:h-80">
             {/* Removed the bubble effect */}
             <motion.img
-              src="./public/avatar.png"
+              src="avatar.jpg"
               alt="Profile Avatar"
               className="absolute inset-[3px] rounded-full object-cover border-4 border-teal-400"  // Added a border around the avatar
               initial={{ scale: 0 }}
