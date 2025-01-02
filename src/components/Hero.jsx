@@ -13,13 +13,10 @@ export const Hero = () => {
       const currentLength = text.length;
       
       if (!isDeleting && currentLength === fullText.length) {
-        // Start deleting after a pause
         timeout = setTimeout(() => setIsDeleting(true), 1500);
       } else if (isDeleting && currentLength === 0) {
-        // Start typing again after a pause
         timeout = setTimeout(() => setIsDeleting(false), 500);
       } else {
-        // Set the speed - faster for deleting, slower for typing
         const speed = isDeleting ? 50 : 100;
         
         timeout = setTimeout(() => {
@@ -39,22 +36,21 @@ export const Hero = () => {
   return (
     <section
       id="Home"
-      className="min-h-screen flex flex-col justify-center items-center px-8 md:px-16"
+      className="min-h-screen flex flex-col justify-center items-center px-8 md:px-16 pt-16 md:pt-0" // Added pt-16 for mobile padding-top
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16">
-        {/* Avatar Column - Move to the left */}
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16 w-full">
+        {/* Avatar Column */}
         <motion.div 
-          className="w-full md:w-1/2 flex justify-center md:justify-start"  // Change justify-center to justify-start
+          className="w-full md:w-1/2 flex justify-center md:justify-start mt-16 md:mt-0" // Added mt-16 for mobile margin-top
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="relative w-64 h-64 md:w-80 md:h-80">
-            {/* Removed the bubble effect */}
             <motion.img
               src="avatar.jpg"
               alt="Profile Avatar"
-              className="absolute inset-[3px] rounded-full object-cover border-4 border-teal-400"  // Added a border around the avatar
+              className="absolute inset-[3px] rounded-full object-cover border-4 border-teal-400"
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ 
@@ -106,13 +102,13 @@ export const Hero = () => {
             </motion.span>
           </motion.h3>
           <motion.p 
-            className="text-gray-400 text-lg mb-8 max-w-lg"
+            className="text-gray-400 text-lg mb-8 max-w-lg mx-auto md:mx-0" // Added mx-auto for mobile centering
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
           >
             Aspiring software engineer with expertise in full-stack development, distributed systems, and blockchain. 
-            Seeking opportunities to create impactful, scalable solutions while advancing technical skills in a  collaborative and dynamic environment.
+            Seeking opportunities to create impactful, scalable solutions while advancing technical skills in a collaborative and dynamic environment.
           </motion.p>
           <motion.div 
             className="flex gap-4 justify-center md:justify-start"
@@ -134,7 +130,7 @@ export const Hero = () => {
               </motion.button>
             </motion.a>
             <motion.a 
-              href="#Contact" // Anchor link to the Contact section
+              href="#Contact"
             >
               <motion.button 
                 className="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-lg font-medium hover:bg-cyan-400/10 transition-colors"
